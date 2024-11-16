@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 255
+    },
+    "Category": {
+      "type": "enumeration",
+      "enum": [
+        "Product Reviews",
+        "Opinions",
+        "Travel Guides"
+      ],
+      "required": true
+    },
+    "Summary": {
+      "type": "text",
+      "required": true,
+      "maxLength": 255
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "Thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "FeaturedImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Content": {
+      "type": "richtext"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "Description": {
+      "type": "richtext"
+    },
+    "img": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "blogs"
+    }
+  }
+}
